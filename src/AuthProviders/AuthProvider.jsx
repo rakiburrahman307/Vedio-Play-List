@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import auth from "./FireBase/FireBaseConfig";
+import { toast } from "react-toastify";
 export const AuthContext = createContext()
 const AuthProvider = ({ children }) => {
     // google provider create here 
@@ -25,11 +26,13 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
     // user logout 
-    const logout =()=>{
+    const logOut =()=>{
         setLoading(true);
-        signOut()
-        .then(()=>console.log('logout'))
-        .catch(err => console.log(err)) 
+        signOut(auth)
+        .then(()=>{
+            toast.success('Log Out Success')
+        })
+        .catch(err => console.log(err.message)); 
     };
 
     // user state changes 
@@ -52,7 +55,7 @@ const AuthProvider = ({ children }) => {
         googleLogin,
         signInEmailAndPass,
         createUser,
-        logout,
+        logOut,
 
     }
 
@@ -60,13 +63,7 @@ const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={authInfo}>
-            {
-                loading ? (
-                    <span className="loading absolute top-1/2 left-1/2 loading-ring loading-lg"></span>
-                ) : (
-                    children 
-                )
-            }
+         {children}  
         </AuthContext.Provider>
     );
 };
