@@ -5,7 +5,7 @@ const VideoList = () => {
     const [AllData, setAllData] = useState([]);
     useEffect(() => {
 
-        fetch('http://localhost:5000/allVideos')
+        fetch('https://video-play-list-server.vercel.app/allVideos')
             .then((res) => res.json())
             .then((data) => setAllData(data))
 
