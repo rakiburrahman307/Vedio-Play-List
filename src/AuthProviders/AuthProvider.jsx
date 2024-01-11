@@ -3,8 +3,25 @@ import PropTypes from 'prop-types';
 export const AuthContext = createContext()
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
-    const authInfo = {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    const authInfo = {
+        loading,
     }
 
 
