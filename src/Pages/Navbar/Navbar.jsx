@@ -1,11 +1,12 @@
 
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import useAuth from "../../Components/Hooks/useAuth";
 
 const Navbar = () => {
-    // const { user, logOut} = useContext(AuthContext);
+    const { user, logOut}= useAuth();
     const navLink = <>
-        <li><Link to='/' className="text-black mr-2 text-bold">Home</Link></li>
+        <li><Link to='/' className="text-black mr-2 font-bold">Home</Link></li>
     </>
     return (
         <div className={`navbar bg-base-100 sticky top-0 z-20 shadow-lg`}>
@@ -30,7 +31,33 @@ const Navbar = () => {
             <ToastContainer />
             <div className="navbar-end">
               
-                
+                {user ? (
+                    <div className="group dropdown dropdown-end">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                {/* <img src={user.photoURL} alt="User Avatar" /> */}
+                            </div>
+                        </label>
+                        <ul
+                            tabIndex={0}
+                            className="group-hover:block hidden z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 transition-transform duration-200 ease-in-out delay-200"
+                        >
+                            {/* Profile Menu Item */}
+                            <h2 className="fond-bold ml-3 my-2">{user.displayName}</h2>
+                            <li><Link to='/profile' className="mr-2">Profile</Link></li>
+                            <li><button className="hover:bg-red-500 hover:text-white" onClick={logOut}>Logout</button></li>
+                        </ul>
+                    </div>
+
+
+                ) : (
+                    <Link
+                        to='login'
+                        className="bg-gradient-to-r from-teal-400 to-teal-600 text-white font-semibold py-2 px-4 rounded-br-full rounded-tl-full transition duration-300 ease-in-out hover:scale-x-105"
+                    >
+                        Login
+                    </Link>
+                )}
 
             </div>
         </div>
