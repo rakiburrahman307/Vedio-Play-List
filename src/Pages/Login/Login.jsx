@@ -52,11 +52,11 @@ const Login = () => {
 
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-outline btn-success">Login</button>
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <Link to='/signup' className="text-md">If Don&apos;t have an account <span className=" link link-hover">sign up</span> </Link>
+                                <Link to='/signup' className="text-md">If Don&apos;t have an account <span className=" link font-bold link-hover">sign up</span> </Link>
                             </label>
                         </div>
                         <div className="divider">OR</div>

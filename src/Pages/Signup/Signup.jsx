@@ -64,7 +64,7 @@ const SignUp = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <Link to='/login' className="text-md">Already have an account <span className=" link link-hover">Login</span> </Link>
+                                <Link to='/login' className="text-md">Already have an account <span className=" link font-bold link-hover">Login</span> </Link>
                             </label>
                         </div>
                         <div className="divider">OR</div>
