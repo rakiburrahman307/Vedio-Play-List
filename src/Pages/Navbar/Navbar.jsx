@@ -5,8 +5,8 @@ import useAuth from "../../Components/Hooks/useAuth";
 import { useState } from "react";
 
 const Navbar = () => {
-    const { user, logOut}= useAuth();
-    const [toggle, setToggle]= useState(false);
+    const { user, logOut } = useAuth();
+    const [toggle, setToggle] = useState(false);
     const navLink = <>
         <li><Link to='/' className=" mr-2 font-bold">Home</Link></li>
     </>
@@ -15,15 +15,15 @@ const Navbar = () => {
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                        <svg onClick={()=>setToggle(!toggle)} xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        <svg onClick={() => setToggle(!toggle)} xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     {
                         toggle ? (
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-gray-500 text-white rounded-box w-52">
-                        {/* Nav ber Links For Mobile Size  */}
-                        {navLink}
-                    </ul>
-                        ):(null)
+                                {/* Nav ber Links For Mobile Size  */}
+                                {navLink}
+                            </ul>
+                        ) : (null)
                     }
                 </div>
                 <Link className="btn btn-ghost normal-case text-xl text-black ">Video Play List</Link>
@@ -36,7 +36,7 @@ const Navbar = () => {
             </div>
             <ToastContainer />
             <div className="navbar-end">
-              
+
                 {user ? (
                     <div className="group dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -50,7 +50,6 @@ const Navbar = () => {
                         >
                             {/* Profile Menu Item */}
                             <h2 className="fond-bold ml-3 my-2">{user.displayName}</h2>
-                            <li><Link to='/profile' className="mr-2">Profile</Link></li>
                             <li><button className="hover:bg-red-500 hover:text-white" onClick={logOut}>Logout</button></li>
                         </ul>
                     </div>

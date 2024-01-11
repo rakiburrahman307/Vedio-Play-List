@@ -56,6 +56,7 @@ const AuthProvider = ({ children }) => {
         signInEmailAndPass,
         createUser,
         logOut,
+        setLoading
 
     }
 
@@ -63,7 +64,12 @@ const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={authInfo}>
-         {children}  
+         {
+            loading ?(<span className="loading absolute top-1/2 left-1/2 loading-ring loading-lg"></span>)
+            :(
+                children
+            )
+         } 
         </AuthContext.Provider>
     );
 };
